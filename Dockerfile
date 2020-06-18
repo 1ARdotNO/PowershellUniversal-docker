@@ -19,11 +19,11 @@ RUN \
  apt-get install -y powershell
 
 #Unzip psu files
-RUN mkdir /psubin
-RUN unzip /tmp/Universal.linux-x64.${psuversion}.zip /psubin
+RUN mkdir /psubin/
+RUN unzip /tmp/Universal.linux-x64.${psuversion}.zip /psubin/
 RUN chmod +x /psubin/Universal.Server
 
 #create folder for dashboard files
-RUN mkdir /psufiles
+RUN mkdir /psufiles/
 
 CMD [ "/psubin/Universal.Server" ]
