@@ -3,9 +3,9 @@ ENV psuversion 1.2.2
 
 ADD https://imsreleases.blob.core.windows.net/universal/production/${psuversion}/Universal.linux-x64.${psuversion}.zip /tmp/
 
-
+#install basic dependencies
 RUN apt-get update
-RUN apt-get install zip nano ca-certificates -y
+RUN apt-get install git zip nano ca-certificates -y
 
 # Install powershell 7
 RUN \
