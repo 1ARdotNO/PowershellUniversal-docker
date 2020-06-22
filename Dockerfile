@@ -20,7 +20,7 @@ RUN \
 
 #Unzip psu files
 RUN mkdir /psubin/
-RUN unzip -d /tmp/Universal.linux-x64.${psuversion}.zip /psubin/
+RUN unzip /tmp/Universal.linux-x64.${psuversion}.zip -d /psubin
 RUN chmod +x /psubin/Universal.Server
 
 #create folder for dashboard files
