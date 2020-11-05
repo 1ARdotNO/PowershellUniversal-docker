@@ -2,7 +2,7 @@ FROM debian:latest
 ENV psuversion 1.4.7
 
 ADD https://imsreleases.blob.core.windows.net/universal/production/${psuversion}/Universal.linux-x64.${psuversion}.zip /tmp/
-
+https://imsreleases.blob.core.windows.net/universal/production/1.4.7/Universal.linux-x64.1.4.7.zip
 #install basic dependencies
 RUN apt-get update
 RUN apt-get install git zip nano ca-certificates -y
@@ -19,7 +19,7 @@ RUN \
  
 #Unzip psu files
 RUN mkdir /home/Universal
-RUN unzip -v /tmp/Universal.linux-x64.${psuversion}.zip -d /home/Universal
+RUN unzip /tmp/Universal.linux-x64.${psuversion}.zip -d /home/Universal | true
 RUN rm /tmp/Universal.linux-x64.${psuversion}.zip
 RUN chmod +x /home/Universal/Universal.Server
 
