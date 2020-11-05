@@ -5,7 +5,7 @@ ADD https://imsreleases.blob.core.windows.net/universal/production/${psuversion}
 
 #install basic dependencies
 RUN apt-get update
-RUN apt-get install git zip nano ca-certificates wget curl -y
+RUN apt-get install git zip nano ca-certificates wget curl less locales gss-ntlmssp -y
 
 # Install powershell 7
 RUN \
