@@ -19,7 +19,7 @@ RUN \
  
 #Unzip psu files
 RUN mkdir /home/Universal
-RUN (unzip /tmp/Universal.linux-x64.${psuversion}.zip -d /home/Universal || true)
+RUN unzip /tmp/Universal.linux-x64.${psuversion}.zip -d /home/Universal; exit 0
 RUN rm /tmp/Universal.linux-x64.${psuversion}.zip
 RUN chmod +x /home/Universal/Universal.Server
 
