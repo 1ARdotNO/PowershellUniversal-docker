@@ -1,5 +1,5 @@
-FROM ubuntu:18.04
-ENV psuversion 1.2.2
+FROM debian:latest
+ENV psuversion 1.4.7
 
 ADD https://imsreleases.blob.core.windows.net/universal/production/${psuversion}/Universal.linux-x64.${psuversion}.zip /tmp/
 
