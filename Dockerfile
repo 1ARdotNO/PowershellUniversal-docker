@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1.9-buster-slim
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim
 ENV psuversion 1.4.7
 ENV LD_LIBRARY_PATH=/app/runtimes/debian.9-x64/native/
 ADD https://imsreleases.blob.core.windows.net/universal/production/${psuversion}/Universal.linux-x64.${psuversion}.zip /tmp/
