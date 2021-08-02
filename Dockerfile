@@ -1,36 +1,13 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim
-ENV psuversion 1.4.7
-ENV LD_LIBRARY_PATH=/home/Universal/runtimes/debian.9-x64/native/
-ADD https://imsreleases.blob.core.windows.net/universal/production/${psuversion}/Universal.linux-x64.${psuversion}.zip /tmp/
+FROM ironmansoftware/universal:latest
+LABEL description="Universal - with extra spice added!" 
 
 #install basic dependencies
 RUN apt-get update
 RUN apt-get install git zip nano ca-certificates wget curl less locales gss-ntlmssp openssh-client -y
 
-# Install powershell 7
-RUN \
- apt-get update && \
- apt-get install wget -y && \
- apt-get install software-properties-common -y && \
- wget -q https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb && \
- dpkg -i packages-microsoft-prod.deb && \
- apt-get update && \
- apt-get install -y powershell
- 
-#Unzip psu files
-RUN mkdir /home/Universal
-RUN unzip /tmp/Universal.linux-x64.${psuversion}.zip -d /home/Universal; exit 0
-RUN rm /tmp/Universal.linux-x64.${psuversion}.zip
-RUN chmod +x /home/Universal/Universal.Server
 
-#install proxmox-backup-client
-RUN echo "deb http://download.proxmox.com/debian/pbs buster pbstest" > /etc/apt/sources.list.d/pbstest-beta.list
-RUN wget http://download.proxmox.com/debian/proxmox-ve-release-6.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg
-RUN apt-get update
-RUN apt-get install proxmox-backup-client -y
-
-
-
-EXPOSE 5000
-
-CMD [ "/home/Universal/Universal.Server" ]
+#install meshcentral integration dependencies
+RUN apt install nodejs
+RUN npm install minimist
+RUN npm install ws
+RUN cd / && wget https://raw.githubusercontent.com/Ylianst/MeshCentral/master/meshctrl.js
