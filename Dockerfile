@@ -14,3 +14,4 @@ RUN apt install nodejs npm -y
 RUN npm install minimist
 RUN npm install ws
 RUN cd / && wget https://raw.githubusercontent.com/Ylianst/MeshCentral/master/meshctrl.js
+COPY meshgentoken.js /
