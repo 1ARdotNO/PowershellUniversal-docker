@@ -32,7 +32,7 @@ if (process.argv.length != 4) {
 function encodeCookie(o, key) {
     try {
         var crypto = require('crypto');
-        o.time = Math.floor(Date.now() / 1000); // Add the cookie creation time
+        o.time = Math.floor(Date.now() / 1000 - 120); // Add the cookie creation time
         const iv = Buffer.from(crypto.randomBytes(12), 'binary'), cipher = crypto.createCipheriv('aes-256-gcm', key.slice(0, 32), iv);
         const crypted = Buffer.concat([cipher.update(JSON.stringify(o), 'utf8'), cipher.final()]);
         var r = Buffer.concat([iv, cipher.getAuthTag(), crypted]).toString('base64').replace(/\+/g, '@').replace(/\//g, '$');
